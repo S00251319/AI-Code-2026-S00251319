@@ -15,4 +15,3 @@ pytest-cov
 qpsolvers
 scipy
 sortedcontainers
-tensorflow
