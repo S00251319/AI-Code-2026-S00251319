@@ -1,0 +1,12 @@
+schema: "classroom50/repo-config/v1"
+classroom: "atu-ai-classroom-2026"
+assignment: "ai-ca-2026"
+owner:
+  username: "S00251319"
+  id: 256303657
+  accepted_at: "2026-09-21T13:18:15Z"
+source:
+  owner: "itsAI20182019"
+  owner_id: 25664712
+  repo: "ATU-AI-CA-2026"
+  branch: "main"
