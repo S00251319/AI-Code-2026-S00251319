@@ -1,10 +1,9 @@
-% Exercise Pt2
+%Excercise part 2
 edge(a, b, 2).
 edge(a, c, 2).
-edge(b, d, 4).
 edge(b, e, 4).
-edge(c, f, 5).
-edge(c, g, 5).
-edge(d, h, 5).
-edge(e, i, 5).
-edge(e, j, 5).
+edge(b, f, 7).
+edge(c, d, 2).
+edge(c, g, 4).
+edge(e, g, 5).
+edge(f, g, 5).
