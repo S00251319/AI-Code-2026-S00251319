@@ -7,7 +7,7 @@ handed(mary, right).
 opposite(right, left).
 opposite(left, right).
 
-% What be le heavy Object?
+% What is a heavy Object?
 heavy(trunk).
 
 % Rule: Two people with opposite hands can lift a heavy object
