@@ -1,0 +1,10 @@
+% Exercise Pt2
+edge(a, b, 2).
+edge(a, c, 2).
+edge(b, d, 4).
+edge(b, e, 4).
+edge(c, f, 5).
+edge(c, g, 5).
+edge(d, h, 5).
+edge(e, i, 5).
+edge(e, j, 5).
