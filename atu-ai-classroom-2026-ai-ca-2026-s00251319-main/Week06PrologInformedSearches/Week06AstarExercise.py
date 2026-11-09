@@ -1,17 +1,17 @@
-"""Represent the Week 6 graph with Poole's search code and run A*."""
-
 from pathlib import Path
 import sys
 
+repo_root = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(repo_root))
+sys.path.insert(0, str(repo_root / "aipython"))
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "aipython"))
+from aipython.searchProblem import Search_problem_from_explicit_graph
+from aipython.searchProblem import Arc
 
-from searchGeneric import AStarSearcher
-from searchProblem import Arc, Search_problem_from_explicit_graph
+from aipython.searchGeneric import AStarSearcher
 
-
-problem = Search_problem_from_explicit_graph(
-    "Week 6 A* graph",
+problem1 = Search_problem_from_explicit_graph(
+    "Problem1",
     nodes={"a", "b", "c", "d", "e", "f", "g"},
     arcs=[
         Arc("a", "b", 5),
@@ -30,20 +30,5 @@ problem = Search_problem_from_explicit_graph(
 )
 
 
-def main():
-    searcher = AStarSearcher(problem)
-    searcher.max_display_level = 4
-    print("A* uses f(n) = path_cost g(n) + heuristic h(n):")
-    path = searcher.search()
-
-    if path is None:
-        print("No path found.")
-        return
-
-    nodes = reversed(list(path.nodes()))
-    print(f"Path: {' -> '.join(nodes)}")
-    print(f"Total cost: {path.cost}")
-
-
-if __name__ == "__main__":
-    main()
+astar_searcher = AStarSearcher(problem1)
+astar_searcher.search()
