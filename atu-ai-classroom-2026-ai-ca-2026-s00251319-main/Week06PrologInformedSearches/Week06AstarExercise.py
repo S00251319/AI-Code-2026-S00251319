@@ -1,34 +1,49 @@
-graph = {
-    'a': {'b': 5, 'c': 5},
-    'b': {'d': 2, 'e': 2},
-    'c': {'e': 2, 'f': 6},
-    'd': {'g': 3},
-    'e': {'g': 1},
-    'f': {'g': 2}
-}
+"""Represent the Week 6 graph with Poole's search code and run A*."""
 
-h = {
-    'a': 7,
-    'b': 3,
-    'c': 4,
-    'd': 2,
-    'e': 3,
-    'f': 2,
-    'g': 0
-}
+from pathlib import Path
+import sys
 
-frontier = [(h['a'], 0, ['a'])]
 
-while frontier:
-    frontier.sort()
-    f, g, path = frontier.pop(0)
-    node = path[-1]
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "aipython"))
 
-    if node == 'g':
-        print(path, g)
-        break
+from searchGeneric import AStarSearcher
+from searchProblem import Arc, Search_problem_from_explicit_graph
 
-    for next_node, cost in graph[node].items():
-        new_g = g + cost
-        new_path = path + [next_node]
-        frontier.append((new_g + h[next_node], new_g, new_path))
+
+problem = Search_problem_from_explicit_graph(
+    "Week 6 A* graph",
+    nodes={"a", "b", "c", "d", "e", "f", "g"},
+    arcs=[
+        Arc("a", "b", 5),
+        Arc("a", "c", 5),
+        Arc("b", "d", 5),
+        Arc("b", "e", 2),
+        Arc("e", "c", 2),
+        Arc("e", "g", 3),
+        Arc("c", "f", 2),
+        Arc("c", "g", 5),
+        Arc("f", "g", 1),
+    ],
+    start="a",
+    goals={"g"},
+    hmap={"a": 7, "b": 3, "c": 4, "d": 2, "e": 3, "f": 2, "g": 0},
+)
+
+
+def main():
+    searcher = AStarSearcher(problem)
+    searcher.max_display_level = 4
+    print("A* uses f(n) = path_cost g(n) + heuristic h(n):")
+    path = searcher.search()
+
+    if path is None:
+        print("No path found.")
+        return
+
+    nodes = reversed(list(path.nodes()))
+    print(f"Path: {' -> '.join(nodes)}")
+    print(f"Total cost: {path.cost}")
+
+
+if __name__ == "__main__":
+    main()
